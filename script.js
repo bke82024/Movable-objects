@@ -1,4 +1,12 @@
 const square = document.getElementById("square");
+const objWidth = square.offsetWidth;
+const objHeight = square.offsetHeight;
+const screenWidth = window.innerWidth;
+const screenHeight = window.innerHeight;
+
+let x = 0;
+let y = 0;
+
 window.addEventListener("keydown", (input) => {
   switch (input.key) {
     case "ArrowDown":
@@ -15,6 +23,7 @@ window.addEventListener("keydown", (input) => {
     case "ArrowUp":
       square.style.transform = changePosition(x, (y -= 10));
       break;
+
     default:
       break;
   }
@@ -23,6 +32,3 @@ window.addEventListener("keydown", (input) => {
 function changePosition(x, y) {
   return `translate(${x}px, ${y}px)`;
 }
-
-let x = 0;
-let y = 0;
