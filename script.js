@@ -3,34 +3,35 @@ const canvas = document.getElementById("canvas");
 const moveAmount = 20;
 const canvasWidth = canvas.clientWidth;
 const canvasHeight = canvas.clientHeight;
+const pos = { x: 0, y: 0 };
 
-const move = () => {
-  return { x: 0, y: 0 };
+const transformMovable = () => {
+  movable.style.transform = `translate(${pos.x}px,${pos.y}px)`;
 };
 
-const pos = move();
 window.addEventListener("keydown", (event) => {
-  if (event.key.startsWith("Arrow")) {
-    event.preventDefault();
-
-    switch (event.key) {
-      case "ArrowUp":
-        pos.y -= moveAmount;
-        move();
-        break;
-      case "ArrowDown":
-        pos.y += moveAmount;
-        break;
-      case "ArrowLeft":
-        pos.x -= moveAmount;
-        break;
-      case "ArrowRight":
-        pos.x += moveAmount;
-        break;
-    }
-
-    movable.style.top = `${pos.y}px`;
-    movable.style.left = `${pos.x}px`;
+  event.preventDefault();
+  switch (event.key) {
+    case "ArrowUp":
+      pos.y -= moveAmount;
+      collCheck();
+      transformMovable();
+      break;
+    case "ArrowDown":
+      pos.y += moveAmount;
+      collCheck();
+      transformMovable();
+      break;
+    case "ArrowLeft":
+      pos.x -= moveAmount;
+      collCheck();
+      transformMovable();
+      break;
+    case "ArrowRight":
+      pos.x += moveAmount;
+      collCheck();
+      transformMovable();
+      break;
   }
 });
 
@@ -42,3 +43,12 @@ window.addEventListener("click", (event) => {
   movable.style.left = `${x}px`;
   movable.style.top = `${y}px`;
 });
+
+function collCheck() {
+  if (pos.x < 0) pos.x = 0;
+  if (pos.y < 0) pos.y = 0;
+  if (pos.x > "???") pos.x = "????";
+  if (pos.y > "???") pos.y = "????";
+
+  transformMovable();
+}
