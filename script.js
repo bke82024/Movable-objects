@@ -1,40 +1,27 @@
 const square = document.getElementById("square");
-const objWidth = square.offsetWidth;
-const objHeight = square.offsetHeight;
-const screenWidth = window.innerWidth;
-const screenHeight = window.innerHeight;
-const mousePos = window.mousePos;
-
+const moveAmount = 10;
 let x = 0;
 let y = 0;
 
-window.addEventListener("keydown", (input) => {
-  switch (input.key) {
-    case "ArrowDown":
-      if (x + 10 <= screenWidth)
-        square.style.transform = changePosition(x, (y += 10));
+window.addEventListener("keydown", (event) => {
+  if (event.key.startsWith("Arrow")) {
+  }
+  event.preventDefault();
+  switch (event.key) {
+    case "ArrowUp":
+      y -= moveAmount;
       break;
-
-    case "ArrowRight":
-      if (x + 10 <= screenWidth)
-        square.style.transform = changePosition((x += 10), y);
-
+    case "ArrowDown":
+      y += moveAmount;
       break;
     case "ArrowLeft":
-      if (x - 10 >= -10) square.style.transform = changePosition((x -= 10), y);
+      x -= moveAmount;
       break;
-
-    case "ArrowUp":
-      if (y - 10 >= -10) square.style.transform = changePosition(x, (y -= 10));
-      break;
-
-    default:
+    case "ArrowRight":
+      x += moveAmount;
       break;
   }
+
+  square.style.top = `${y}px`;
+  square.style.left = `${x}px`;
 });
-
-window.addEventListener("click", (click) => {});
-
-function changePosition(x, y) {
-  return `translate(${x}px, ${y}px)`;
-}

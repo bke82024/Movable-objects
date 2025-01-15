@@ -14,3 +14,11 @@ body {
   position: absolute;
   transform: translate(100px, 200px);
 }
+
+#obstacle {
+  background-color: blue;
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  transform: translate(400px, 300px);
+}
