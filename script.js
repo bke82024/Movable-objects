@@ -11,7 +11,7 @@ const transformMovable = () => {
   movable.style.transform = `translate(${pos.x}px,${pos.y}px)`;
 };
 
-window.addEventListener("keydown", (event) => {
+document.addEventListener("keydown", (event) => {
   event.preventDefault();
   switch (event.key) {
     case "ArrowUp":
@@ -37,13 +37,11 @@ window.addEventListener("keydown", (event) => {
   }
 });
 
-window.addEventListener("click", (event) => {
-  const x = event.clientX - movable.offsetWidth / 2;
-  const y = event.clientY - movable.offsetHeight / 2;
-  pos.x = x;
-  pos.y = y;
-  movable.style.left = `${x}px`;
-  movable.style.top = `${y}px`;
+canvas.addEventListener("click", (event) => {
+  pos.x = event.clientX - size / 2;
+  pos.y = event.clientY - size / 2;
+  collCheck();
+  transformMovable();
 });
 
 function collCheck() {
