@@ -1,9 +1,13 @@
 const movable = document.getElementById("square");
 const canvas = document.getElementById("canvas");
 const moveAmount = 20;
+const canvasWidth = canvas.clientWidth;
+const canvasHeight = canvas.clientHeight;
+
 const move = () => {
   return { x: 0, y: 0 };
 };
+
 const pos = move();
 window.addEventListener("keydown", (event) => {
   if (event.key.startsWith("Arrow")) {
