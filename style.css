@@ -16,8 +16,7 @@ h2 {
 }
 #square {
   background: radial-gradient(white 10%, yellow 50%, red 100%);
-  width: 100px;
-  height: 100px;
+  aspect-ratio: 1;
   position: absolute;
 }
 #canvas {

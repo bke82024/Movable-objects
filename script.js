@@ -1,6 +1,8 @@
 const movable = document.getElementById("square");
 const canvas = document.getElementById("canvas");
 const moveAmount = 20;
+const size = 100;
+movable.style.width = `${size}px`;
 const canvasWidth = canvas.clientWidth;
 const canvasHeight = canvas.clientHeight;
 const pos = { x: 0, y: 0 };
@@ -47,8 +49,8 @@ window.addEventListener("click", (event) => {
 function collCheck() {
   if (pos.x < 0) pos.x = 0;
   if (pos.y < 0) pos.y = 0;
-  if (pos.x > "???") pos.x = "????";
-  if (pos.y > "???") pos.y = "????";
+  if (pos.x > canvas.offsetWidth - size) pos.x = canvas.offsetWidth - size;
+  if (pos.y > canvas.offsetHeight - size) pos.y = canvas.offsetHeight - size;
 
   transformMovable();
 }
