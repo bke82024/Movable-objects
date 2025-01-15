@@ -6,9 +6,13 @@
 body {
   overflow: hidden;
 }
-
+h2 {
+  display: flex;
+  font-size: 1.5rem;
+  color: black;
+}
 #square {
-  background-color: red;
+  background: radial-gradient(white 10%, yellow 50%, red 100%);
   width: 100px;
   height: 100px;
   position: absolute;
